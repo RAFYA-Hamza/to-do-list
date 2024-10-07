@@ -22,7 +22,7 @@ html {
   --dark-color-900: #241722;
   --dark-color-800: #352432;
   --dark-color-700: #462730;
-  --dark-color-600: #462730;
+  --dark-color-600: #632329;
 }
 
 #empty-list {
@@ -53,16 +53,17 @@ html {
 
 .button {
   height: 3.625rem;
-  width: 12.8125rem;
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 1.125rem;
 
   border-radius: 40px;
 
   padding: 1rem 1.625rem;
 
-  transition: all 300ms ease-in;
+  transition: background-color 300ms ease-in;
 }
 
 .button:hover {
@@ -84,18 +85,23 @@ html {
   border-radius: 50%;
 }
 
-.button__icon-circle span {
+.button__icon-rect {
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+}
+
+.button__icon span {
   height: 2px;
   width: 0.625rem;
   background-color: var(--primary-color);
   border-radius: 2px;
 }
 
-.button__icon-circle span:first-child {
+.button__icon span:first-child {
   transform: translateX(50%);
 }
 
-.button__icon-circle span:last-child {
+.button__icon span:last-child {
   transform: rotateZ(90deg) translateY(225%);
 }
 
@@ -178,7 +184,7 @@ html {
   box-shadow: 0 4px 8px black;
   background-color: var(--dark-color-900);
 
-  transition: all 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
 }
 
 .list:hover {
@@ -193,7 +199,7 @@ html {
 
   background-color: rgba(99, 35, 41, 0.6);
 
-  transition: all 300ms ease-in;
+  transition: width 300ms ease-in;
 }
 
 .list__trash:hover {
@@ -232,7 +238,7 @@ html {
   border-radius: 0.2rem;
   background-color: var(--secondary-color-200);
 
-  transition: all 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
 }
 
 .list__arrow:hover span {

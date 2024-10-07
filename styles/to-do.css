@@ -1,0 +1,132 @@
+.header-todo__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-todo__arrow-left {
+  height: 2.25rem;
+  width: 2.25rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  border-radius: 50%;
+  border: 2px solid var(--dark-color-600);
+
+  transition: border-color 300ms ease-out;
+}
+
+.header-todo__arrow-left:hover {
+  border-color: var(--primary-color);
+}
+
+.header-todo__arrow-left span {
+  height: 2px;
+  width: 0.75rem;
+
+  border-radius: 2px;
+  background-color: var(--dark-color-600);
+
+  transition: background-color 300ms ease-out;
+}
+
+.header-todo__arrow-left:hover span {
+  background-color: var(--primary-color);
+}
+
+.header-todo__arrow-left span:first-child {
+  transform: translate(-6px, -1.5px) rotateZ(-45deg);
+}
+
+.header-todo__arrow-left span:nth-child(2) {
+  width: 1rem;
+}
+
+.header-todo__arrow-left span:last-child {
+  transform: translate(-6px, 1.5px) rotateZ(45deg);
+}
+
+.header-todo__text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #feede1;
+}
+
+.header-todo__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.button__icon-trash {
+  background-image: url("../assets/icons/trash-primary.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90%;
+}
+
+/* EMPTY TODO */
+
+.empty-todo__block {
+  height: 22.25rem;
+  width: 33.625rem;
+}
+
+.empty-todo__content {
+  top: 5rem;
+  left: 0;
+  right: 0;
+
+  gap: 3.625rem;
+}
+
+.empty-todo__image {
+  height: 23.5rem;
+  width: 25rem;
+  background-image: url("../assets/images/zombieing.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.empty-todo__text {
+  font-size: 1.5rem;
+  color: var(--secondary-color-200);
+}
+
+/* TO DO SECTION */
+
+.to-dos {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.875rem;
+  margin: 3.125rem 7.0625rem;
+}
+
+.to-do {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  gap: 1rem;
+
+  background-color: var(--dark-color-800);
+  border-radius: 4px;
+
+  padding: 1.125rem 2rem;
+}
+
+.to-do__checkbox {
+  border-color: red;
+}
+
+.to-do__trash {
+  margin-left: auto;
+}
