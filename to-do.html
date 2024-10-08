@@ -40,7 +40,7 @@
         </div>
     </header>
 
-    <section id="empty-list" class="empty-todo empty-list">
+    <section id="empty-lis" class="empty-todo empty-list">
         <div class="empty-todo__block empty-list__block"></div>
         <div class="empty-todo__content empty-list__content">
             <div class="empty-todo__image"></div>
@@ -48,7 +48,7 @@
         </div>
     </section>
 
-    <section class="to-dos">
+    <section id="empty-list" class="to-dos">
         <div class="to-do">
 
             <div class="to-do__checkbox-container">
@@ -57,11 +57,28 @@
             </div>
 
             <div class="to-do__item-container">
-                <input type="text" name="to-do__item" id="to-do__item">
+                <input class="to-do__item" type="text" name="to-do__item" id="to-do__item"
+                    placeholder="Write something...">
                 <label for="to-do__item"></label>
             </div>
 
-            <div class="to-do__trash">##</div>
+            <div class="to-do__trash"></div>
+        </div>
+
+        <div class="to-do">
+
+            <div class="to-do__checkbox-container">
+                <input class="to-do__checkbox" type="checkbox" id="checkbox-1">
+                <label for="checkbox-1"></label>
+            </div>
+
+            <div class="to-do__item-container">
+                <input class="to-do__item" type="text" name="to-do__item" id="to-do__item"
+                    placeholder="Write something...">
+                <label for="to-do__item"></label>
+            </div>
+
+            <div class="to-do__trash"></div>
         </div>
 
 

@@ -147,6 +147,21 @@ html {
   align-items: center;
 }
 
+.empty-list__image {
+  height: 23.5rem;
+  width: 25rem;
+
+  background-image: url("../assets/images/reading-side.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.empty-list__text {
+  font-size: 1.5rem;
+  color: white;
+}
+
 .empty-list__h1 {
   font-size: 8rem;
   color: white;
