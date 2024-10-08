@@ -115,6 +115,7 @@
   display: flex;
   flex-direction: row;
   justify-items: center;
+  align-items: center;
   gap: 1rem;
 
   background-color: var(--dark-color-800);
@@ -123,8 +124,65 @@
   padding: 1.125rem 2rem;
 }
 
+.to-do__checkbox-container {
+  height: 1.5rem;
+  width: 1.5rem;
+  position: relative;
+}
+
 .to-do__checkbox {
-  border-color: red;
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Hides the real checkbox */
+}
+
+/* Style the label that follows the hidden checkbox */
+.to-do__checkbox + label {
+  cursor: pointer;
+}
+/* Create the custom checkbox before the label text */
+.to-do__checkbox + label::before {
+  height: calc(1.5rem - 0.25rem);
+  width: calc(1.5rem - 0.25rem);
+
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  border: 2px solid transparent;
+  border-radius: 4px;
+
+  background: linear-gradient(var(--dark-color-800), var(--dark-color-800))
+      padding-box,
+    var(--gradient-color) border-box;
+}
+
+/* Show checkmark when checkbox is checked */
+.to-do__checkbox:checked + label::before {
+  background: linear-gradient(var(--dark-color-800), var(--dark-color-800))
+      padding-box,
+    var(--gradient-color) border-box;
+}
+
+.to-do__checkbox:checked + label::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  left: 35%;
+  width: 5px;
+  height: 15px;
+
+  border: solid;
+  border-image: var(--gradient-color) 1;
+  background-color: transparent;
+
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 .to-do__trash {
