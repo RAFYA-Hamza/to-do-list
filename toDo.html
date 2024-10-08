@@ -16,7 +16,7 @@
 <body>
     <header class="header">
         <div class="header-todo__title">
-            <div onclick="location.href=`index.html`" class="header-todo__arrow-left">
+            <div onclick="location.href=`lists.html`" class="header-todo__arrow-left">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -40,7 +40,7 @@
         </div>
     </header>
 
-    <section id="empty-lis" class="empty-todo empty-list">
+    <section id="empty-list" class="empty-todo empty-list">
         <div class="empty-todo__block empty-list__block"></div>
         <div class="empty-todo__content empty-list__content">
             <div class="empty-todo__image"></div>
@@ -48,7 +48,7 @@
         </div>
     </section>
 
-    <section id="empty-list" class="to-dos">
+    <section id="empty-lis" class="to-dos js-to-dos">
         <div class="to-do">
 
             <div class="to-do__checkbox-container">
@@ -86,6 +86,7 @@
 
     </section>
 
+    <script src="./script/utils/toDo.js" type="module"></script>
 
 </body>
 
