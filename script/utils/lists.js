@@ -8,7 +8,14 @@ lists.forEach((list) => {
         <div id="${list.id}" class="list js-list">
             <div data-trash-id="${list.id}" class=" list__trash js-list__trash"></div>
 
-            <p class="list__title">${list.TitleList}</p>
+
+
+            <div class="list__item-container to-do__item-container">
+                <input value="${list.TitleList}" class="to-do__item list__item" type="text" name="list__item" id="list-${list.id}"
+                    placeholder="Write something...">
+                <label for="list-${list.id}"></label>
+            </div>
+
             <div data-arrow-id="${list.id}" class="list__arrow js-list__arrow">
                 <span></span>
                 <span></span>
@@ -35,4 +42,8 @@ document.querySelectorAll(".js-list__trash").forEach((element) => {
 
     console.log(trashId);
   });
+});
+
+document.querySelector(".js-button--newList").addEventListener("click", () => {
+  console.log("new list");
 });

@@ -10,17 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/to-do.css">
 </head>
 
 <body>
     <header class="header">
         <p class="header__title">TO DO | YOUR LISTS</p>
-        <div class="button">
+        <div class="button js-button--newList">
             <div class="button__icon button__icon-circle button__icon-rect">
                 <span></span>
                 <span></span>
             </div>
-            <a class="button__text" href="toDo.html">Add new List</a>
+            <div class="button__text">Add new List</div>
         </div>
     </header>
 
@@ -47,9 +48,18 @@
     </section>
 
 
-    <section id="lists" class="lists js-lists">
+    <section id="lists" class="lists js-lists"></section>
 
-    </section>
+    <div class="popup">
+        <div class="popup__container">
+            <input class="popup__input" type="text" name="new-list" id="new-list" placeholder="Write your list...">
+            <label for="new-list"></label>
+
+            <div class="popup_button">Save</div>
+
+        </div>
+
+    </div>
 
     <script src="./script/utils/lists.js" type="module"></script>
 
