@@ -45,5 +45,26 @@ document.querySelectorAll(".js-list__trash").forEach((element) => {
 });
 
 document.querySelector(".js-button--newList").addEventListener("click", () => {
-  console.log("new list");
+  var popupContainer = document.querySelector(".js-popup__container");
+  var popup = document.querySelector(".js-popup");
+
+  popupContainer.style.opacity = "1";
+  popup.style.display = "flex";
+});
+
+document.getElementById("newList").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  var newData = new FormData(newList);
+
+  console.log(Object.fromEntries(newData)["new-list"]);
+
+  var popupContainer = document.querySelector(".js-popup__container");
+  var popup = document.querySelector(".js-popup");
+
+  popupContainer.style.opacity = "0";
+
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 1500);
 });
