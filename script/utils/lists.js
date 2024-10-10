@@ -1,10 +1,21 @@
-import { lists } from "../../data/toDoLists.js";
+import {
+  toDoLists,
+  loadListsFromStorage,
+  addList,
+  removeList,
+} from "../../data/toDoLists.js";
+
 // import { displayToDoList } from "./toDo.js";
 
-let listsHTML = "";
+renderList();
 
-lists.forEach((list) => {
-  listsHTML += `
+function renderList() {
+  let listsHTML = "";
+
+  loadListsFromStorage();
+
+  toDoLists.forEach((list) => {
+    listsHTML += `
         <div id="${list.id}" class="list js-list">
             <div data-trash-id="${list.id}" class=" list__trash js-list__trash"></div>
 
@@ -22,27 +33,32 @@ lists.forEach((list) => {
             </div>
         </div>
     `;
-});
-
-document.querySelector(".js-lists").innerHTML = listsHTML;
-
-document.querySelectorAll(".js-list__arrow").forEach((element) => {
-  element.addEventListener("click", () => {
-    const arrowId = element.dataset.arrowId;
-
-    // displayToDoList(arrowId);
-
-    window.location.href = `toDo.html?id=${arrowId}`;
   });
-});
 
-document.querySelectorAll(".js-list__trash").forEach((element) => {
-  element.addEventListener("click", () => {
-    const trashId = element.dataset.trashId;
+  document.querySelector(".js-lists").innerHTML = listsHTML;
 
-    console.log(trashId);
+  document.querySelectorAll(".js-list__arrow").forEach((element) => {
+    element.addEventListener("click", () => {
+      const arrowId = element.dataset.arrowId;
+
+      // displayToDoList(arrowId);
+
+      window.location.href = `toDo.html?id=${arrowId}`;
+    });
   });
-});
+
+  document.querySelectorAll(".js-list__trash").forEach((element) => {
+    element.addEventListener("click", () => {
+      const trashId = element.dataset.trashId;
+
+      console.log("remove list id: ");
+      console.log(trashId);
+      removeList(trashId);
+
+      renderList();
+    });
+  });
+}
 
 document.querySelector(".js-button--newList").addEventListener("click", () => {
   var popupContainer = document.querySelector(".js-popup__container");
@@ -56,15 +72,21 @@ document.getElementById("newList").addEventListener("submit", (event) => {
   event.preventDefault();
 
   var newData = new FormData(newList);
-
-  console.log(Object.fromEntries(newData)["new-list"]);
+  var value = Object.fromEntries(newData)["new-list"];
 
   var popupContainer = document.querySelector(".js-popup__container");
   var popup = document.querySelector(".js-popup");
+
+  console.log(value);
+
+  addList(value);
 
   popupContainer.style.opacity = "0";
 
   setTimeout(() => {
     popup.style.display = "none";
+    renderList();
   }, 1500);
+
+  newList.reset();
 });
