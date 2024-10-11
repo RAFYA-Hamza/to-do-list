@@ -25,7 +25,9 @@ html {
   --dark-color-600: #632329;
 }
 
-#empty-list {
+#hide-empty-list__init,
+#hide-empty-list__deleted,
+#hide-popup {
   display: none;
 }
 

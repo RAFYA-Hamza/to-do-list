@@ -71,7 +71,12 @@ export function addList(value) {
   toDoLists.push({
     id: newId,
     TitleList: value,
-    toDo: [],
+    toDo: [
+      "List 1 to-do 1",
+      "List 1 to-do 1",
+      "List 1 to-do 1",
+      "List 1 to-do 1",
+    ],
   });
 
   saveListsToStorage();
@@ -100,8 +105,6 @@ export function modifyList(Id, value) {
       toDoList.TitleList = value;
     }
   });
-
-  console.log(toDoLists);
 
   saveListsToStorage();
 }

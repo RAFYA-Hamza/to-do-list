@@ -9,7 +9,37 @@ import {
 // import { displayToDoList } from "./toDo.js";
 
 renderList();
+initCreate();
 
+// Handle submit utton and key enter to create a new list
+function handleSubmit(event, element) {
+  event.preventDefault();
+
+  const formId = element.dataset.formId;
+  const value = document.getElementById(`list-${formId}`).value;
+
+  modifyList(formId, value);
+
+  setTimeout(() => {
+    document.getElementById(`submit-${formId}`).style.display = "none";
+
+    document.getElementById(`list-${formId}`).setAttribute("readonly", "true");
+  }, 100);
+}
+
+// Init when we visit the website the first time
+function initCreate() {
+  var oneTest = true;
+
+  if (toDoLists.length === 0 && oneTest) {
+    const initList = document.getElementById("hide-empty-list__init");
+    initList.style.display = "flex";
+
+    oneTest = false;
+  }
+}
+
+// function to render/refresh the list
 function renderList() {
   let listsHTML = "";
 
@@ -51,7 +81,16 @@ function renderList() {
   document.querySelectorAll(".js-list__trash").forEach((element) => {
     element.addEventListener("click", () => {
       const trashId = element.dataset.trashId;
+      const emptyListElement = document.getElementById(
+        "hide-empty-list__deleted"
+      );
+
       removeList(trashId);
+
+      if (toDoLists.length === 0) {
+        emptyListElement.style.display = "flex";
+      }
+
       renderList();
     });
   });
@@ -63,29 +102,18 @@ function renderList() {
 
       document.getElementById(`submit-${inputId}`).style.display = "flex";
     });
-
-    element.addEventListener("input", () => {
-      console.log(element.value);
-    });
   });
 }
 
 document.querySelectorAll(".js-form").forEach((element) => {
   element.addEventListener("submit", (event) => {
-    event.preventDefault();
+    handleSubmit(event, element);
+  });
 
-    const formId = element.dataset.formId;
-    const value = document.getElementById(`list-${formId}`).value;
-
-    modifyList(formId, value);
-
-    setTimeout(() => {
-      document.getElementById(`submit-${formId}`).style.display = "none";
-
-      document
-        .getElementById(`list-${formId}`)
-        .setAttribute("readonly", "true");
-    }, 100);
+  element.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      handleSubmit(event, element);
+    }
   });
   element.reset();
 });
@@ -107,12 +135,18 @@ document.getElementById("newList").addEventListener("submit", (event) => {
   var popupContainer = document.querySelector(".js-popup__container");
   var popup = document.querySelector(".js-popup");
 
+  const initListElement = document.getElementById("hide-empty-list__init");
+  const emptyListElement = document.getElementById("hide-empty-list__deleted");
+
   addList(value);
 
   popupContainer.style.opacity = "0";
 
   setTimeout(() => {
     popup.style.display = "none";
+    initListElement.style.display = "none";
+    emptyListElement.style.display = "none";
+
     renderList();
   }, 1500);
 

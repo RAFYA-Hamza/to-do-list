@@ -1,4 +1,4 @@
-import { lists } from "../../data/toDoLists.js";
+import { toDoLists, loadListsFromStorage } from "../../data/toDoLists.js";
 
 let toDoHTML = "";
 
@@ -10,29 +10,36 @@ function getQueryParameter(param) {
 
 const taskId = getQueryParameter("id");
 
-console.log(taskId);
+// var toDoList = toDoLists[taskId].toDo;
 
-var toDoList = lists[taskId].toDo;
+toDoLists.forEach((toDoList) => {
+  if (toDoList.id === taskId) {
+    if (toDoList.toDo.legnth === 0) {
+      console.log("empty to do");
+    } else {
+      toDoList.toDo.forEach((toDo) => {
+        console.log(toDo);
+      });
+    }
+  }
 
-toDoList.forEach((toDo, index) => {
-  console.log(toDo);
-  toDoHTML += `
-        <div id="${index}" class="to-do">
+  //   toDoHTML += `
+  //         <div id="${index}" class="to-do">
 
-            <div class="to-do__checkbox-container">
-                <input class="to-do__checkbox" type="checkbox" id="checkbox-${index}">
-                <label for="checkbox-${index}"></label>
-            </div>
+  //             <div class="to-do__checkbox-container">
+  //                 <input class="to-do__checkbox" type="checkbox" id="checkbox-${index}">
+  //                 <label for="checkbox-${index}"></label>
+  //             </div>
 
-            <div class="to-do__item-container">
-                <input value="${toDo}" class="to-do__item" type="text" name="to-do__item" id="task-${index}"
-                    placeholder="Write something...">
-                <label for="task-${index}"></label>
-            </div>
+  //             <div class="to-do__item-container">
+  //                 <input value="${toDo}" class="to-do__item" type="text" name="to-do__item" id="task-${index}"
+  //                     placeholder="Write something...">
+  //                 <label for="task-${index}"></label>
+  //             </div>
 
-            <div class="to-do__trash"></div>
-        </div>
-    `;
+  //             <div class="to-do__trash"></div>
+  //         </div>
+  //     `;
 });
 
-document.querySelector(".js-to-dos").innerHTML = toDoHTML;
+// document.querySelector(".js-to-dos").innerHTML = toDoHTML;
