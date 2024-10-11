@@ -3,6 +3,7 @@ import {
   loadListsFromStorage,
   addList,
   removeList,
+  modifyList,
 } from "../../data/toDoLists.js";
 
 // import { displayToDoList } from "./toDo.js";
@@ -19,13 +20,13 @@ function renderList() {
         <div id="${list.id}" class="list js-list">
             <div data-trash-id="${list.id}" class=" list__trash js-list__trash"></div>
 
-
-
-            <div class="list__item-container to-do__item-container">
-                <input value="${list.TitleList}" class="to-do__item list__item" type="text" name="list__item" id="list-${list.id}"
+            <form data-form-id="${list.id}" class="list__item-container to-do__item-container js-form">
+                <input data-input-id="${list.id}" autofocus readonly="true" value="${list.TitleList}" class="to-do__item list__item js-list__item" type="text" name="list__item" id="list-${list.id}"
                     placeholder="Write something...">
                 <label for="list-${list.id}"></label>
-            </div>
+
+                <button id="submit-${list.id}" data-submit-id="${list.id}" type="submit" class="list__submit"></button>
+            </form>
 
             <div data-arrow-id="${list.id}" class="list__arrow js-list__arrow">
                 <span></span>
@@ -50,15 +51,44 @@ function renderList() {
   document.querySelectorAll(".js-list__trash").forEach((element) => {
     element.addEventListener("click", () => {
       const trashId = element.dataset.trashId;
-
-      console.log("remove list id: ");
-      console.log(trashId);
       removeList(trashId);
-
       renderList();
     });
   });
+
+  document.querySelectorAll(".js-list__item").forEach((element) => {
+    element.addEventListener("dblclick", () => {
+      element.removeAttribute("readonly");
+      const inputId = element.dataset.inputId;
+
+      document.getElementById(`submit-${inputId}`).style.display = "flex";
+    });
+
+    element.addEventListener("input", () => {
+      console.log(element.value);
+    });
+  });
 }
+
+document.querySelectorAll(".js-form").forEach((element) => {
+  element.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formId = element.dataset.formId;
+    const value = document.getElementById(`list-${formId}`).value;
+
+    modifyList(formId, value);
+
+    setTimeout(() => {
+      document.getElementById(`submit-${formId}`).style.display = "none";
+
+      document
+        .getElementById(`list-${formId}`)
+        .setAttribute("readonly", "true");
+    }, 100);
+  });
+  element.reset();
+});
 
 document.querySelector(".js-button--newList").addEventListener("click", () => {
   var popupContainer = document.querySelector(".js-popup__container");
@@ -76,8 +106,6 @@ document.getElementById("newList").addEventListener("submit", (event) => {
 
   var popupContainer = document.querySelector(".js-popup__container");
   var popup = document.querySelector(".js-popup");
-
-  console.log(value);
 
   addList(value);
 

@@ -4,10 +4,7 @@ loadListsFromStorage();
 
 // Load the to do lists from storage
 export function loadListsFromStorage() {
-  console.log("load from storage");
   toDoLists = JSON.parse(localStorage.getItem("toDoLists"));
-
-  console.log(toDoLists);
 
   if (!toDoLists) {
     toDoLists = [
@@ -28,8 +25,6 @@ export function loadListsFromStorage() {
       },
     ];
   }
-
-  console.log(toDoLists);
 }
 
 // save the to do lists to storage
@@ -94,6 +89,17 @@ export function removeList(Id) {
   });
 
   toDoLists = newToDolists;
+
+  saveListsToStorage();
+}
+
+// modifying a list
+export function modifyList(Id, value) {
+  toDoLists.forEach((toDoList) => {
+    if (toDoList.id === Id) {
+      toDoList.TitleList = value;
+    }
+  });
 
   console.log(toDoLists);
 

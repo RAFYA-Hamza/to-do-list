@@ -306,12 +306,36 @@ html {
   font-size: 1.125rem;
 }
 
+.list__submit {
+  height: 50%;
+  width: 2rem;
+  display: none;
+
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+
+  background-color: var(--dark-color-600);
+  background-image: url(../assets/icons/done-icon.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+
+  color: var(--secondary-color-200);
+
+  transition: background-color 300ms ease-in-out;
+}
+
+.list__submit:hover {
+  background-image: url(../assets/icons/done-icon-hover.png);
+  background-color: var(--secondary-color-200);
+}
+
 .list__arrow {
   height: 2rem;
   width: 2rem;
 
-  margin-left: auto;
-  margin-right: 0.875rem;
+  margin: 0 0.875rem;
 
   display: flex;
   flex-direction: column;
