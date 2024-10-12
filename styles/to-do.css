@@ -74,6 +74,14 @@
 
 /* EMPTY TODO */
 
+.empty-todo {
+  padding-top: 6rem;
+}
+
+#empty-todo__list {
+  display: none;
+}
+
 .empty-todo__block {
   height: 22.25rem;
   width: 33.625rem;
@@ -84,13 +92,13 @@
   left: 0;
   right: 0;
 
-  gap: 3.625rem;
+  gap: 2rem;
 }
 
 .empty-todo__image {
   height: 23.5rem;
   width: 25rem;
-  background-image: url("../assets/images/zombieing.png");
+  background-image: url("../assets/images/reading-side.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

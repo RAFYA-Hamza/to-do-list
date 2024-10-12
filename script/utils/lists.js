@@ -118,6 +118,7 @@ document.querySelectorAll(".js-form").forEach((element) => {
   element.reset();
 });
 
+// Listen when to click on the button for adding a new list
 document.querySelector(".js-button--newList").addEventListener("click", () => {
   var popupContainer = document.querySelector(".js-popup__container");
   var popup = document.querySelector(".js-popup");
@@ -126,6 +127,7 @@ document.querySelector(".js-button--newList").addEventListener("click", () => {
   popup.style.display = "flex";
 });
 
+// management of the popup submit form
 document.getElementById("newList").addEventListener("submit", (event) => {
   event.preventDefault();
 

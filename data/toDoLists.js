@@ -71,19 +71,13 @@ export function addList(value) {
   toDoLists.push({
     id: newId,
     TitleList: value,
-    toDo: [
-      "List 1 to-do 1",
-      "List 1 to-do 1",
-      "List 1 to-do 1",
-      "List 1 to-do 1",
-    ],
+    toDo: [],
   });
 
   saveListsToStorage();
 }
 
 // Remove a to do list from the list
-
 export function removeList(Id) {
   const newToDolists = [];
 
@@ -103,6 +97,30 @@ export function modifyList(Id, value) {
   toDoLists.forEach((toDoList) => {
     if (toDoList.id === Id) {
       toDoList.TitleList = value;
+    }
+  });
+
+  saveListsToStorage();
+}
+
+// Add the to do in list
+
+export function addToDo(value, taskId) {
+  toDoLists.forEach((toDoList) => {
+    if (toDoList.id === taskId) {
+      toDoList.toDo.push(value);
+    }
+  });
+
+  saveListsToStorage();
+}
+
+// Remove to do from list
+export function removeToDo(taskId, indexToDo) {
+  toDoLists.forEach((toDoList) => {
+    if (toDoList.id === taskId) {
+      toDoList.toDo.splice(indexToDo, 1);
+      console.log(toDoList.toDo);
     }
   });
 

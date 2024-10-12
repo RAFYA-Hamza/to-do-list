@@ -14,30 +14,8 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-todo__title">
-            <div onclick="location.href=`lists.html`" class="header-todo__arrow-left">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <p class="header-todo__text">New List</p>
-        </div>
+    <header class="header js-header">
 
-        <div class="header-todo__buttons">
-            <div class="button">
-                <div class="button__icon button__icon-trash"></div>
-                <a class="button__text" href="to-do.html">Delete List</a>
-            </div>
-
-            <div class="button">
-                <div class="button__icon button__icon-rect">
-                    <span></span>
-                    <span></span>
-                </div>
-                <a class="button__text" href="to-do.html">Add to-do</a>
-            </div>
-        </div>
     </header>
 
     <section id="empty-todo__list" class="empty-todo empty-list">
@@ -49,6 +27,17 @@
     </section>
 
     <section id="to-dos" class="to-dos js-to-dos"></section>
+
+    <div id="hide-popup" class="popup js-popup">
+        <form id="newToDo" class="popup__container js-popup__container">
+            <input class="popup__input" type="text" name="new-toDo" id="new-toDo" placeholder="Write your to do...">
+            <label for="new-toDo"></label>
+
+            <button type="submit" class="popup_button">Save</button>
+
+        </form>
+
+    </div>
 
     <script src="./script/utils/toDo.js" type="module"></script>
 
