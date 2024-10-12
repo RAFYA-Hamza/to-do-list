@@ -3,6 +3,7 @@ import {
   loadListsFromStorage,
   removeToDo,
   addToDo,
+  removeList,
 } from "../../data/toDoLists.js";
 
 // Function to get the query parameter (task ID)
@@ -12,14 +13,13 @@ function getQueryParameter(param) {
 }
 
 const taskId = getQueryParameter("id");
+let title;
 
 renderToDo();
 readTrashAll();
 renderHeader();
 
 function renderHeader() {
-  let title;
-
   toDoLists.forEach((toDoList) => {
     if (toDoList.id === taskId) {
       title = toDoList.TitleList;
@@ -28,7 +28,7 @@ function renderHeader() {
 
   let headerHTML = `
         <div class="header-todo__title">
-            <div class="header-todo__arrow-left">
+            <div class="header-todo__arrow-left js-header-todo__arrow-left">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -37,17 +37,17 @@ function renderHeader() {
         </div>
 
         <div class="header-todo__buttons">
-            <div class="button">
+            <div class="button js-button__delete">
                 <div class="button__icon button__icon-trash"></div>
-                <a class="button__text" href="to-do.html">Delete List</a>
+                <div class="button__text">Delete List</div>
             </div>
 
-            <div class="button">
+            <div class="button js-button__add">
                 <div class="button__icon button__icon-rect">
                     <span></span>
                     <span></span>
                 </div>
-                <div class="button__text js-button__text">Add to-do</div>
+                <div class="button__text">Add to-do</div>
             </div>
         </div>
     `;
@@ -103,7 +103,7 @@ function readTrashAll() {
   });
 }
 
-document.querySelector(".js-button__text").addEventListener("click", () => {
+document.querySelector(".js-button__add").addEventListener("click", () => {
   var popupContainer = document.querySelector(".js-popup__container");
   var popup = document.querySelector(".js-popup");
 
@@ -125,8 +125,6 @@ document.getElementById("newToDo").addEventListener("submit", (event) => {
 
   addToDo(value, taskId);
 
-  console.log(newData);
-
   popupContainer.style.opacity = "0";
 
   setTimeout(() => {
@@ -137,4 +135,15 @@ document.getElementById("newToDo").addEventListener("submit", (event) => {
   }, 1500);
 
   newToDo.reset();
+});
+
+document
+  .querySelector(".js-header-todo__arrow-left")
+  .addEventListener("click", () => {
+    window.location.href = "lists.html";
+  });
+
+document.querySelector(".js-button__delete").addEventListener("click", () => {
+  removeList(taskId);
+  window.location.href = "lists.html";
 });

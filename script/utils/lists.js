@@ -31,7 +31,7 @@ function handleSubmit(event, element) {
 function initCreate() {
   var oneTest = true;
 
-  if (toDoLists.length === 0 && oneTest) {
+  if (!toDoLists && oneTest) {
     const initList = document.getElementById("hide-empty-list__init");
     initList.style.display = "flex";
 

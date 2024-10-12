@@ -9,19 +9,9 @@ export function loadListsFromStorage() {
   if (!toDoLists) {
     toDoLists = [
       {
-        id: "0",
-        TitleList: "List 0",
-        toDo: ["List 0 to-do 0", "List 0 to-do 0", "List 0 to-do 0"],
-      },
-      {
-        id: "1",
-        TitleList: "List 1",
-        toDo: [
-          "List 1 to-do 1",
-          "List 1 to-do 1",
-          "List 1 to-do 1",
-          "List 1 to-do 1",
-        ],
+        id: "",
+        TitleList: "",
+        toDo: [],
       },
     ];
   }
