@@ -1,9 +1,10 @@
 import {
   toDoLists,
   loadListsFromStorage,
+  removeList,
   removeToDo,
   addToDo,
-  removeList,
+  modifyToDo,
 } from "../../data/toDoLists.js";
 
 // Function to get the query parameter (task ID)
@@ -70,11 +71,11 @@ function renderToDo() {
           toDoHTML += `
                 <div id="${taskId}" class="to-do">
                     <div class="to-do__checkbox-container">
-                        <input class="to-do__checkbox" type="checkbox" id="checkbox-${index}">
+                        <input data-id="${index}" class="to-do__checkbox" type="checkbox" id="checkbox-${index}">
                         <label for="checkbox-${index}"></label>
                     </div>
                     <div class="to-do__item-container">
-                        <input value="${toDo}" class="to-do__item" type="text" name="to-do__item" id="task-${index}"
+                        <input value="${toDo.content}" class="to-do__item js-to-do__item" type="text" name="to-do__item" id="task-${index}"
                             placeholder="Write something...">
                         <label for="task-${index}"></label>
                     </div>
@@ -146,4 +147,32 @@ document
 document.querySelector(".js-button__delete").addEventListener("click", () => {
   removeList(taskId);
   window.location.href = "lists.html";
+});
+
+document.querySelectorAll(".to-do__checkbox").forEach((element) => {
+  element.addEventListener("click", () => {
+    const id = element.dataset.id;
+    const newValue = document.getElementById(`task-${id}`).value;
+    const checkedAttribute = element.hasAttribute("checked");
+
+    if (checkedAttribute) {
+      modifyToDo(id, taskId, true, newValue);
+    } else {
+    }
+
+    // if (condition) {
+
+    // } else {
+
+    // }
+
+    // modifyToDo(id, taskId, true, newValue);
+
+    // console.log(element);
+
+    // renderToDo();
+
+    const toDoElement = document.getElementById(`task-${id}`);
+    // toDoElement.style.textDecoration = "line-through";
+  });
 });

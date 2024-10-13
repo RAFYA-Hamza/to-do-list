@@ -94,11 +94,13 @@ export function modifyList(Id, value) {
 }
 
 // Add the to do in list
-
 export function addToDo(value, taskId) {
   toDoLists.forEach((toDoList) => {
     if (toDoList.id === taskId) {
-      toDoList.toDo.push(value);
+      toDoList.toDo.push({
+        checked: false,
+        content: value,
+      });
     }
   });
 
@@ -111,6 +113,20 @@ export function removeToDo(taskId, indexToDo) {
     if (toDoList.id === taskId) {
       toDoList.toDo.splice(indexToDo, 1);
       console.log(toDoList.toDo);
+    }
+  });
+
+  saveListsToStorage();
+}
+
+// Modify to do from list
+export function modifyToDo(toDoId, taskId, checkedStatus, value) {
+  toDoLists.forEach((toDoList) => {
+    if (toDoList.id === taskId) {
+      toDoList.toDo.splice(toDoId, 1, {
+        checked: checkedStatus,
+        content: value,
+      });
     }
   });
 
