@@ -17,8 +17,8 @@ const taskId = getQueryParameter("id");
 let title;
 
 renderToDo();
-readTrashAll();
 renderHeader();
+readTrashAll();
 
 function renderHeader() {
   toDoLists.forEach((toDoList) => {
@@ -89,6 +89,7 @@ function renderToDo() {
 
   document.querySelector(".js-to-dos").innerHTML = toDoHTML;
   readTrashAll();
+  readCheckBox();
 }
 
 function readTrashAll() {
@@ -98,6 +99,37 @@ function readTrashAll() {
       const trashTodoId = element.dataset.trashtodoId;
 
       removeToDo(taskId, trashTodoId);
+
+      renderToDo();
+    });
+  });
+}
+
+function readCheckBox() {
+  document.querySelectorAll(".to-do__checkbox").forEach((element) => {
+    const id = element.dataset.id;
+    const newValue = document.getElementById(`task-${id}`).value;
+    const toDoElement = document.getElementById(`task-${id}`);
+
+    toDoLists.forEach((toDoList) => {
+      if (toDoList.id === taskId) {
+        if (toDoList.toDo[id].checked) {
+          element.setAttribute("checked", "true");
+          toDoElement.style.textDecoration = "line-through";
+        }
+      }
+    });
+
+    element.addEventListener("click", () => {
+      toDoLists.forEach((toDoList) => {
+        if (toDoList.id === taskId) {
+          if (!toDoList.toDo[id].checked) {
+            modifyToDo(id, taskId, true, newValue);
+          } else {
+            modifyToDo(id, taskId, false, newValue);
+          }
+        }
+      });
 
       renderToDo();
     });
@@ -147,32 +179,4 @@ document
 document.querySelector(".js-button__delete").addEventListener("click", () => {
   removeList(taskId);
   window.location.href = "lists.html";
-});
-
-document.querySelectorAll(".to-do__checkbox").forEach((element) => {
-  element.addEventListener("click", () => {
-    const id = element.dataset.id;
-    const newValue = document.getElementById(`task-${id}`).value;
-    const checkedAttribute = element.hasAttribute("checked");
-
-    if (checkedAttribute) {
-      modifyToDo(id, taskId, true, newValue);
-    } else {
-    }
-
-    // if (condition) {
-
-    // } else {
-
-    // }
-
-    // modifyToDo(id, taskId, true, newValue);
-
-    // console.log(element);
-
-    // renderToDo();
-
-    const toDoElement = document.getElementById(`task-${id}`);
-    // toDoElement.style.textDecoration = "line-through";
-  });
 });

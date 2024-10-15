@@ -20,6 +20,8 @@ export function loadListsFromStorage() {
 // save the to do lists to storage
 function saveListsToStorage() {
   localStorage.setItem("toDoLists", JSON.stringify(toDoLists));
+
+  console.log(toDoLists);
 }
 
 // short random string for ids - not guaranteed to be unique
@@ -112,7 +114,6 @@ export function removeToDo(taskId, indexToDo) {
   toDoLists.forEach((toDoList) => {
     if (toDoList.id === taskId) {
       toDoList.toDo.splice(indexToDo, 1);
-      console.log(toDoList.toDo);
     }
   });
 
