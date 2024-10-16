@@ -74,11 +74,13 @@ function renderToDo() {
                         <input data-id="${index}" class="to-do__checkbox" type="checkbox" id="checkbox-${index}">
                         <label for="checkbox-${index}"></label>
                     </div>
-                    <div class="to-do__item-container">
-                        <input value="${toDo.content}" class="to-do__item js-to-do__item" type="text" name="to-do__item" id="task-${index}"
-                            placeholder="Write something...">
-                        <label for="task-${index}"></label>
-                    </div>
+                    <form data-form-id="${index}" class="list__item-container to-do__item-container js-form">
+                      <input data-input-id="${index}" autofocus readonly="true" value="${toDo.content}" class="to-do__item list__item js-to-do__item" type="text" name="list__item" id="task-${index}"
+                          placeholder="Write something...">
+                      <label for="task-${index}"></label>
+
+                        <button id="submit-" data-submit-id="${index}" type="submit" class="list__submit"></button>
+                    </form>
                     <div data-trashTodo-id="${index}" class="to-do__trash js-to-do__trash"></div>
                 </div>
             `;
@@ -90,6 +92,14 @@ function renderToDo() {
   document.querySelector(".js-to-dos").innerHTML = toDoHTML;
   readTrashAll();
   readCheckBox();
+
+  document.querySelectorAll(".js-to-do__item").forEach((element) => {
+    element.addEventListener("dblclick", () => {
+      element.removeAttribute("readonly");
+
+      document.getElementById(`submit-`).style.display = "flex";
+    });
+  });
 }
 
 function readTrashAll() {
@@ -178,5 +188,6 @@ document
 
 document.querySelector(".js-button__delete").addEventListener("click", () => {
   removeList(taskId);
-  window.location.href = "lists.html";
+
+  window.location.href = `lists.html?checkInitStatus=${false}`;
 });

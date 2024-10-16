@@ -309,7 +309,7 @@ html {
 }
 
 .list__submit {
-  height: 50%;
+  height: 2rem;
   width: 2rem;
   display: none;
 

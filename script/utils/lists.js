@@ -11,6 +11,12 @@ import {
 renderList();
 initCreate();
 
+// get data parameter
+function getinitStatus(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
 // Handle submit utton and key enter to create a new list
 function handleSubmit(event, element) {
   event.preventDefault();
@@ -29,13 +35,17 @@ function handleSubmit(event, element) {
 
 // Init when we visit the website the first time
 function initCreate() {
-  var oneTest = true;
+  var checkInitStatus = getinitStatus("checkInitStatus");
 
-  if (!toDoLists && oneTest) {
+  if (toDoLists.length === 0 && checkInitStatus === null) {
     const initList = document.getElementById("hide-empty-list__init");
     initList.style.display = "flex";
+  } else if (toDoLists.length === 0 && checkInitStatus) {
+    const deletedListElement = document.getElementById(
+      "hide-empty-list__deleted"
+    );
 
-    oneTest = false;
+    deletedListElement.style.display = "flex";
   }
 }
 
