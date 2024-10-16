@@ -20,8 +20,6 @@ export function loadListsFromStorage() {
 // save the to do lists to storage
 function saveListsToStorage() {
   localStorage.setItem("toDoLists", JSON.stringify(toDoLists));
-
-  console.log(toDoLists);
 }
 
 // short random string for ids - not guaranteed to be unique
@@ -52,7 +50,6 @@ const getId = function ({ length, existing = [] }) {
       attempts++; // record failed attempt
     }
   }
-  console.log(id);
   return id; // the id or false if did not get unique after max attempts
 };
 
