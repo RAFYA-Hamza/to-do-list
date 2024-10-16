@@ -150,14 +150,13 @@
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0; /* Hides the real checkbox */
+  opacity: 0;
 }
 
-/* Style the label that follows the hidden checkbox */
 .to-do__checkbox + label {
   cursor: pointer;
 }
-/* Create the custom checkbox before the label text */
+
 .to-do__checkbox + label::before {
   height: calc(1.5rem - 0.25rem);
   width: calc(1.5rem - 0.25rem);
@@ -175,7 +174,6 @@
     var(--gradient-color) border-box;
 }
 
-/* Show checkmark when checkbox is checked */
 .to-do__checkbox:checked + label::before {
   background: linear-gradient(var(--dark-color-800), var(--dark-color-800))
       padding-box,
