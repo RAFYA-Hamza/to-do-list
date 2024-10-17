@@ -119,6 +119,7 @@ export function removeToDo(taskId, indexToDo) {
 
 // Modify to do from list
 export function modifyToDo(toDoId, taskId, checkedStatus, value) {
+  console.log(value);
   toDoLists.forEach((toDoList) => {
     if (toDoList.id === taskId) {
       toDoList.toDo.splice(toDoId, 1, {

@@ -117,6 +117,7 @@ function renderList() {
 
 document.querySelectorAll(".js-form").forEach((element) => {
   element.addEventListener("submit", (event) => {
+    console.log("submit");
     handleSubmit(event, element);
   });
 

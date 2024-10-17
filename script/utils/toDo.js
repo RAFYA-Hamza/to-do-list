@@ -74,12 +74,12 @@ function renderToDo() {
                         <input data-id="${index}" class="to-do__checkbox" type="checkbox" id="checkbox-${index}">
                         <label for="checkbox-${index}"></label>
                     </div>
-                    <form data-form-id="${index}" class="list__item-container to-do__item-container js-form">
-                      <input data-input-id="${index}" autofocus readonly="true" value="${toDo.content}" class="to-do__item list__item js-to-do__item" type="text" name="list__item" id="task-${index}"
+                    <form data-form-id="${index}" class="list__item-container to-do__item-container js-todo-form">
+                      <input data-input-id="${index}" autofocus readonly="true" value="${toDo.content}" class="to-do__item list__item js-to-do__item" type="text" name="todo__item" id="task-${index}"
                           placeholder="Write something...">
                       <label for="task-${index}"></label>
 
-                        <button id="submit-" data-submit-id="${index}" type="submit" class="list__submit"></button>
+                        <button id="submit-${index}" data-submit-id="${index}" type="submit" class="list__submit"></button>
                     </form>
                     <div data-trashTodo-id="${index}" class="to-do__trash js-to-do__trash"></div>
                 </div>
@@ -95,9 +95,10 @@ function renderToDo() {
 
   document.querySelectorAll(".js-to-do__item").forEach((element) => {
     element.addEventListener("dblclick", () => {
-      element.removeAttribute("readonly");
+      const idElement = element.dataset.inputId;
 
-      document.getElementById(`submit-`).style.display = "flex";
+      element.removeAttribute("readonly");
+      document.getElementById(`submit-${idElement}`).style.display = "flex";
     });
   });
 }
@@ -190,4 +191,37 @@ document.querySelector(".js-button__delete").addEventListener("click", () => {
   removeList(taskId);
 
   window.location.href = `lists.html?checkInitStatus=${false}`;
+});
+
+// Handle submit utton and key enter to create a new list
+function handleSubmitToDo(event, element) {
+  event.preventDefault();
+
+  console.log("handle");
+
+  const formId = element.dataset.formId;
+  const value = document.getElementById(`task-${formId}`).value;
+
+  modifyToDo(formId, taskId, false, value);
+
+  setTimeout(() => {
+    document.getElementById(`submit-${formId}`).style.display = "none";
+
+    document.getElementById(`task-${formId}`).setAttribute("readonly", "true");
+
+    renderToDo();
+  }, 100);
+}
+
+document.querySelectorAll(".js-todo-form").forEach((element) => {
+  element.addEventListener("submit", (event) => {
+    handleSubmitToDo(event, element);
+  });
+
+  element.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      handleSubmitToDo(event, element);
+    }
+  });
+  element.reset();
 });
