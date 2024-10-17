@@ -92,6 +92,7 @@ function renderToDo() {
   document.querySelector(".js-to-dos").innerHTML = toDoHTML;
   readTrashAll();
   readCheckBox();
+  readSubmitButtons();
 
   document.querySelectorAll(".js-to-do__item").forEach((element) => {
     element.addEventListener("dblclick", () => {
@@ -213,15 +214,18 @@ function handleSubmitToDo(event, element) {
   }, 100);
 }
 
-document.querySelectorAll(".js-todo-form").forEach((element) => {
-  element.addEventListener("submit", (event) => {
-    handleSubmitToDo(event, element);
-  });
-
-  element.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
+function readSubmitButtons() {
+  document.querySelectorAll(".js-todo-form").forEach((element) => {
+    element.addEventListener("submit", (event) => {
       handleSubmitToDo(event, element);
-    }
+    });
+
+    element.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        handleSubmitToDo(event, element);
+      }
+    });
+
+    element.reset();
   });
-  element.reset();
-});
+}
