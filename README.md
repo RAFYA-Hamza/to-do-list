@@ -1,6 +1,6 @@
 # To-Do List Website
 
-![License](https://img.shields.io/github/license/username/todo-list) ![Version](https://img.shields.io/github/v/release/username/todo-list)
+![License](https://img.shields.io/github/license/RAFYA-Hamza/to-do-list) ![Version](https://img.shields.io/github/v/release/RAFYA-Hamza/to-do-list)
 
 ## Description
 
@@ -24,11 +24,11 @@ This is a simple and interactive **To-Do List** website that allows users to cre
 ### Steps
 1. Clone the repository:
     ```bash
-    git clone https://github.com/username/todo-list.git
+    git clone https://github.com/username/to-do-list.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd todo-list
+    cd to-do-list
     ```
 3. Open `index.html` in your preferred web browser to view the app.
 
