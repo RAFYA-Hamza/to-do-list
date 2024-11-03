@@ -69,4 +69,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [LinkedIn](https://www.linkedin.com/in/your-profile) - your.email@example.com
 
-Project Link: [GitHub Repository](https://github.com/username/todo-list)
+Project Link: [GitHub Repository](https://github.com/username/to-do-list)
