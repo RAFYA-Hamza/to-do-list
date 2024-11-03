@@ -1,6 +1,6 @@
 # To-Do List Website
 
-![License](https://img.shields.io/github/LICENSE/RAFYA-Hamza/to-do-list) ![Version](https://img.shields.io/github/v/release/RAFYA-Hamza/to-do-list)
+![License](https://img.shields.io/github/license/RAFYA-Hamza/to-do-list) ![Version](https://img.shields.io/github/v/release/RAFYA-Hamza/to-do-list)
 
 ## Description
 
