@@ -24,7 +24,7 @@ This is a simple and interactive **To-Do List** website that allows users to cre
 ### Steps
 1. Clone the repository:
     ```bash
-    git clone https://github.com/username/to-do-list.git
+    git clone https://github.com/RAFYA-Hamza/to-do-list.git
     ```
 2. Navigate to the project directory:
     ```bash
@@ -67,6 +67,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - [LinkedIn](https://www.linkedin.com/in/your-profile) - your.email@example.com
+Your Name - [LinkedIn](https://www.linkedin.com/in/hamza-rafya-01a0011b8) - hamza.rafya.dev@gmail.com
 
-Project Link: [GitHub Repository](https://github.com/username/to-do-list)
+Project Link: [GitHub Repository](https://github.com/RAFYA-Hamza/to-do-list)
