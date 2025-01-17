@@ -185,7 +185,7 @@ document.getElementById("newToDo").addEventListener("submit", (event) => {
 document
   .querySelector(".js-header-todo__arrow-left")
   .addEventListener("click", () => {
-    window.location.href = "lists.html";
+    window.location.href = "index.html";
   });
 
 document.querySelector(".js-button__delete").addEventListener("click", () => {
