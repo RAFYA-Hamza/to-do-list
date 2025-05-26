@@ -3,7 +3,6 @@
 ![License](https://img.shields.io/github/license/RAFYA-Hamza/to-do-list) ![Version](https://img.shields.io/github/v/release/RAFYA-Hamza/to-do-list)
 
 ## Description
-
 This is a simple and interactive **To-Do List** website that allows users to create, manage, and organize their tasks. Built with HTML, CSS, and JavaScript, this app enables users to add, delete, and mark tasks as completed. It’s ideal for personal productivity and organization.
 
 ## Table of Contents
