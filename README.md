@@ -41,7 +41,6 @@ Provide a link to the live demo if available:
 [Live Demo](https://your-live-demo-link.com)
 
 ## Features
-
 - **Add Tasks**: Quickly add tasks to your to-do list.
 - **Mark as Complete**: Click on tasks to mark them as completed or incomplete.
 - **Delete Tasks**: Remove tasks from the list as needed.
