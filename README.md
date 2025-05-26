@@ -31,7 +31,6 @@ This is a simple and interactive **To-Do List** website that allows users to cre
 3. Open `index.html` in your preferred web browser to view the app.
 
 ## Usage
-
 1. Open the **To-Do List** app in your browser.
 2. Enter a new task in the input field and press "Add" to add it to the list.
 3. Click on a task to mark it as complete or incomplete.
