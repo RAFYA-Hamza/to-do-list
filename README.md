@@ -48,7 +48,6 @@ Provide a link to the live demo if available:
 - **Responsive Design**: Accessible on both desktop and mobile devices.
 
 ## Contributing
-
 Contributions are welcome! Please follow these steps:
 
 1. Fork the project.
